@@ -1,0 +1,75 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdc
+*.pkl
+
+# Environment
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Flask / Instance
+instance/
+*.pid
+
+# IDE / Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Byte-compiled / cache
+.cache/
+.mypy_cache/
+.pytest_cache/
+
+# Logs
+logs/
+*.log
+
+# Virtual environment meta
+pip-wheel-metadata/
+
+# Local settings
+config.ini
+.env
+*.local
+
+# Alembic / Migrations cache
+migrations/__pycache__/
+migrations/versions/__pycache__/
+
+# Redis dump (if created locally)
+dump.rdb
+
+# Docker
+docker/data/
+docker/*.pid
+
+# PyInstaller
+*.spec
+dist/
+build/
+
+# Coverage
+htmlcov/
+.coverage
+.coverage.*
+
+# SQLite (case some tests use it)
+*.sqlite
+*.sqlite3
+
+# Temporary files
+tmp/
+temp/
+*.tmp
