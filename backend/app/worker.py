@@ -1,3 +1,5 @@
+import sys
+sys.path.append('/app')
 from app import create_app, db
 import json
 from app.models.product import Product

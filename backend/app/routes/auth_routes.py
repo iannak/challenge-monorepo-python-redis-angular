@@ -6,7 +6,6 @@ from app import db
 
 auth_bp = Blueprint("auth", __name__, url_prefix="/auth")
 
-# Rota para registrar novo usuário
 @auth_bp.post("/register")
 def register():
     data = request.get_json()
@@ -26,15 +25,18 @@ def register():
 
 @auth_bp.post("/login")
 def login():
-    data = request.get_json()
-    token = authenticate(data["email"], data["password"])
+    data = request.get_json() or {}
+    email = data.get("email")
+    password = data.get("password")
+    if not email or not password:
+        return jsonify({"error": "Email e senha são obrigatórios."}), 400
 
+    token = authenticate(email, password)
     if not token:
         return jsonify({"error": "Credenciais inválidas"}), 401
 
     return jsonify({"token": token}), 200
 
-# Simples logout (JWT stateless, apenas instrução para frontend descartar token)
 @auth_bp.post("/logout")
 @jwt_required()
 def logout():
