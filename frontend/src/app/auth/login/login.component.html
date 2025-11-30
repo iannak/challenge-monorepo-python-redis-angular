@@ -1,0 +1,26 @@
+
+<div style="display:flex;justify-content:center;align-items:center;height:100vh;width:100vw;background:#fafafa;">
+  <form (ngSubmit)="submit()" style="width:100%;max-width:400px;">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Login</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field appearance="outline" style="width:100%;">
+          <mat-label>E-mail</mat-label>
+          <input matInput [(ngModel)]="email" name="email" type="email" required autocomplete="email" />
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width:100%;">
+          <mat-label>Senha</mat-label>
+          <input matInput [(ngModel)]="password" name="password" type="password" required autocomplete="current-password" />
+        </mat-form-field>
+        <div *ngIf="error" style="color:#d32f2f;margin-top:1rem;">
+          <mat-icon color="warn">error</mat-icon> {{ error }}
+        </div>
+      </mat-card-content>
+      <mat-card-actions style="justify-content:flex-end;">
+        <button mat-raised-button color="primary" type="submit">Entrar</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>
