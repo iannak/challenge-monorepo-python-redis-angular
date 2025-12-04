@@ -1,8 +1,8 @@
 import json
+from flask import current_app
 
 
 def enqueue_operation(operation, data):
-    from flask import current_app
     message = json.dumps({
         "operation": operation,
         "data": data

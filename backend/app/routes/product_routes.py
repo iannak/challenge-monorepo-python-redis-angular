@@ -4,11 +4,7 @@ from flask_jwt_extended import jwt_required, get_jwt_identity
 from app.services.queue_service import enqueue_operation
 from app.models.product import Product
 
-product_bp = Blueprint("products", __name__, url_prefix="/products")
-
-@product_bp.route('/', methods=['OPTIONS'], strict_slashes=False)
-def products_options():
-    return '', 200
+product_bp = Blueprint("products", __name__)
 
 
 @product_bp.get("/", strict_slashes=False)
@@ -36,8 +32,6 @@ def create_product():
         "price": data.get("price")
     })
     return jsonify({"message": "Operação enfileirada"}), 202
-
-    product_bp = Blueprint("products", __name__, url_prefix="/products")
 @product_bp.put("/<int:id>", strict_slashes=False)
 @jwt_required()
 def update_product(id):

@@ -4,7 +4,7 @@ from app.auth.jwt_handler import authenticate
 from app.models.user import User
 from app import db
 
-auth_bp = Blueprint("auth", __name__, url_prefix="/auth")
+auth_bp = Blueprint("auth", __name__)
 
 @auth_bp.post("/register")
 def register():

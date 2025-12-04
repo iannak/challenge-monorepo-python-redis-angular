@@ -22,14 +22,16 @@ def create_app():
     jwt.init_app(app)
     migrate.init_app(app, db)
 
-    # Enable CORS for all origins
+    # Enable CORS for explicit frontend origin (required when using credentials)
     from flask_cors import CORS
+    frontend_url = os.getenv("FRONTEND_URL", "http://localhost:4200")
     CORS(
         app,
-        resources={r"/*": {"origins": "*"}},
+        resources={r"/api/*": {"origins": [frontend_url]}},
         supports_credentials=True,
         allow_headers=["Content-Type", "Authorization"],
-        methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+        methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        max_age=3600
     )
 
     # Redis connection
@@ -48,7 +50,7 @@ def create_app():
     from .routes.auth_routes import auth_bp
     from .routes.product_routes import product_bp
 
-    app.register_blueprint(auth_bp, url_prefix="/auth")
-    app.register_blueprint(product_bp, url_prefix="/products")
+    app.register_blueprint(auth_bp, url_prefix="/api/auth")
+    app.register_blueprint(product_bp, url_prefix="/api/products")
 
     return app

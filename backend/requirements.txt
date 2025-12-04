@@ -4,6 +4,7 @@ flask==3.1.2
 Flask-JWT-Extended==4.7.1
 flask-sqlalchemy==3.1.1
 flask-cors==4.0.0
+flask-swagger-ui==4.11.1
 psycopg2-binary==2.9.11
 redis==7.0.1
 python-dotenv==1.2.1

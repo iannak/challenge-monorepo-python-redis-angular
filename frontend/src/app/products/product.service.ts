@@ -17,18 +17,18 @@ export class ProductService {
   }
 
   list(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.api}/products`, this.getAuthHeaders());
+    return this.http.get<Product[]>(`${this.api}/api/products`, this.getAuthHeaders());
   }
 
   create(product: Partial<Product>) {
-    return this.http.post(`${this.api}/products`, product, this.getAuthHeaders());
+    return this.http.post(`${this.api}/api/products`, product, this.getAuthHeaders());
   }
 
   update(id: number, product: Partial<Product>) {
-    return this.http.put(`${this.api}/products/${id}`, product, this.getAuthHeaders());
+    return this.http.put(`${this.api}/api/products/${id}`, product, this.getAuthHeaders());
   }
 
   delete(id: number) {
-    return this.http.delete(`${this.api}/products/${id}`, this.getAuthHeaders());
+    return this.http.delete(`${this.api}/api/products/${id}`, this.getAuthHeaders());
   }
 }

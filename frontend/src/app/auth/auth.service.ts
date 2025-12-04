@@ -10,7 +10,7 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(email: string, password: string) {
-    return this.http.post<any>(`${this.api}/auth/login`, { email, password })
+    return this.http.post<any>(`${this.api}/api/auth/login`, { email, password })
       .pipe(tap(res => {
         if (res && typeof window !== 'undefined' && window.localStorage) {
           if (res.access_token) {
@@ -25,7 +25,7 @@ export class AuthService {
   }
 
   register(email: string, password: string) {
-    return this.http.post<any>(`${this.api}/auth/register`, { email, password });
+    return this.http.post<any>(`${this.api}/api/auth/register`, { email, password });
   }
 
   logout() {
